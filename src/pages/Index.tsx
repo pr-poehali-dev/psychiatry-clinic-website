@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -11,6 +12,7 @@ const Index = () => {
     phone: '',
     message: ''
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,12 +34,64 @@ const Index = () => {
             <a href="#services" className="text-foreground hover:text-primary transition-colors">Услуги</a>
             <a href="#about" className="text-foreground hover:text-primary transition-colors">О нас</a>
             <a href="#team" className="text-foreground hover:text-primary transition-colors">Специалисты</a>
+            <a href="#reviews" className="text-foreground hover:text-primary transition-colors">Отзывы</a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">Контакты</a>
           </nav>
           <Button className="hidden md:flex">
             <Icon name="Phone" size={18} className="mr-2" />
             +7 (800) 123-45-67
           </Button>
+          
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Icon name="Menu" size={24} />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px]">
+              <nav className="flex flex-col gap-6 mt-8">
+                <a 
+                  href="#services" 
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Услуги
+                </a>
+                <a 
+                  href="#about" 
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  О нас
+                </a>
+                <a 
+                  href="#team" 
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Специалисты
+                </a>
+                <a 
+                  href="#reviews" 
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Отзывы
+                </a>
+                <a 
+                  href="#contact" 
+                  className="text-lg text-foreground hover:text-primary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Контакты
+                </a>
+                <Button size="lg" className="mt-4">
+                  <Icon name="Phone" size={20} className="mr-2" />
+                  +7 (800) 123-45-67
+                </Button>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </header>
 
@@ -276,6 +330,120 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Licenses Section */}
+      <section className="py-20 px-4 bg-muted">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold text-secondary mb-4">Лицензии и сертификаты</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Вся деятельность клиники лицензирована и соответствует государственным стандартам
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            {[
+              { icon: 'FileCheck', title: 'Лицензия Минздрава', number: 'ЛО-77-01-020123' },
+              { icon: 'Award', title: 'Сертификат ISO 9001', number: 'Система качества' },
+              { icon: 'ShieldCheck', title: 'Аккредитация', number: 'Государственная' },
+              { icon: 'Medal', title: 'Премия качества', number: '2023 год' }
+            ].map((cert, index) => (
+              <Card key={index} className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in" style={{ animationDelay: `${index * 100}ms` }}>
+                <CardContent className="p-6 text-center space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto">
+                    <Icon name={cert.icon as any} size={32} className="text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-secondary mb-1">{cert.title}</h3>
+                    <p className="text-sm text-muted-foreground">{cert.number}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground mb-4">Все специалисты имеют действующие сертификаты и регулярно проходят повышение квалификации</p>
+            <Button variant="outline" size="lg">
+              <Icon name="Download" size={20} className="mr-2" />
+              Скачать копии документов
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews Section */}
+      <section id="reviews" className="py-20 px-4 bg-background">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl font-bold text-secondary mb-4">Отзывы пациентов</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Мы ценим доверие наших пациентов. Все отзывы публикуются анонимно
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                initials: 'А.М.',
+                text: 'Обратилась с тяжёлой депрессией. Думала, что выхода нет. Врачи клиники помогли мне вернуться к жизни. Спасибо за профессионализм и человечность.',
+                service: 'Психиатрия',
+                rating: 5,
+                date: 'Ноябрь 2024'
+              },
+              {
+                initials: 'С.К.',
+                text: 'Анонимность — это главное, что меня волновало. В клинике действительно гарантируют полную конфиденциальность. Прошёл курс лечения, жизнь изменилась к лучшему.',
+                service: 'Наркология',
+                rating: 5,
+                date: 'Октябрь 2024'
+              },
+              {
+                initials: 'М.В.',
+                text: 'Семейная терапия спасла наш брак. Психотерапевт помогла нам найти общий язык и решить давние проблемы. Рекомендую всем, кто столкнулся с кризисом в отношениях.',
+                service: 'Психотерапия',
+                rating: 5,
+                date: 'Декабрь 2024'
+              }
+            ].map((review, index) => (
+              <Card key={index} className="border-2 hover:shadow-xl transition-all animate-fade-in" style={{ animationDelay: `${index * 150}ms` }}>
+                <CardContent className="p-8 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <span className="font-bold text-primary">{review.initials}</span>
+                      </div>
+                      <div>
+                        <div className="flex gap-1">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                          ))}
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">{review.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-muted-foreground leading-relaxed">"{review.text}"</p>
+                  
+                  <div className="pt-4 border-t border-border">
+                    <span className="text-sm font-semibold text-primary">{review.service}</span>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center bg-primary/5 border border-primary/20 rounded-xl p-8 animate-fade-in animation-delay-400">
+            <Icon name="Quote" size={40} className="text-primary mx-auto mb-4" />
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-4">
+              За 15 лет работы мы помогли более 10 000 пациентов вернуться к полноценной жизни. 
+              Каждая история выздоровления уникальна, но все они начинаются с первого шага — обращения за помощью.
+            </p>
+            <p className="text-sm text-muted-foreground">Главный врач клиники, Иванова Е.М.</p>
+          </div>
+        </div>
+      </section>
+
       {/* How We Work Section */}
       <section className="py-20 px-4 bg-muted">
         <div className="container mx-auto max-w-6xl">
@@ -415,6 +583,7 @@ const Index = () => {
               <ul className="space-y-2 text-white/70">
                 <li><a href="#about" className="hover:text-white transition-colors">О клинике</a></li>
                 <li><a href="#team" className="hover:text-white transition-colors">Специалисты</a></li>
+                <li><a href="#reviews" className="hover:text-white transition-colors">Отзывы</a></li>
                 <li><a href="#contact" className="hover:text-white transition-colors">Контакты</a></li>
               </ul>
             </div>
