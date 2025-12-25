@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -144,83 +145,136 @@ const Index = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <Icon name="Brain" size={32} className="text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary">Психиатрия</h3>
-                <p className="text-muted-foreground">
-                  Диагностика и лечение психических расстройств. Современные методики и индивидуальный подход.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Депрессия и тревожные расстройства</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Биполярное расстройство</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Психотические состояния</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            <Link to="/services/psychiatrist">
+              <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in cursor-pointer h-full">
+                <CardContent className="p-8 space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                    <Icon name="Brain" size={32} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-secondary">Психиатрия</h3>
+                  <p className="text-muted-foreground">
+                    Диагностика и лечение психических расстройств. Современные методики и индивидуальный подход.
+                  </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Депрессия и тревожные расстройства</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Биполярное расстройство</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Психотические состояния</span>
+                    </li>
+                  </ul>
+                  <div className="pt-4">
+                    <span className="text-primary font-semibold flex items-center gap-2">
+                      Подробнее <Icon name="ArrowRight" size={16} />
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in animation-delay-200">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
-                  <Icon name="HeartPulse" size={32} className="text-accent" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary">Наркология</h3>
-                <p className="text-muted-foreground">
-                  Лечение зависимостей с гарантией полной анонимности. Комплексная программа реабилитации.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-accent mt-1" />
-                    <span>Алкогольная зависимость</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-accent mt-1" />
-                    <span>Наркотическая зависимость</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-accent mt-1" />
-                    <span>Реабилитация и поддержка</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            <Link to="/services/narcologist">
+              <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in animation-delay-200 cursor-pointer h-full">
+                <CardContent className="p-8 space-y-4">
+                  <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center">
+                    <Icon name="HeartPulse" size={32} className="text-accent" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-secondary">Наркология</h3>
+                  <p className="text-muted-foreground">
+                    Лечение зависимостей с гарантией полной анонимности. Комплексная программа реабилитации.
+                  </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-accent mt-1" />
+                      <span>Алкогольная зависимость</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-accent mt-1" />
+                      <span>Наркотическая зависимость</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-accent mt-1" />
+                      <span>Реабилитация и поддержка</span>
+                    </li>
+                  </ul>
+                  <div className="pt-4">
+                    <span className="text-primary font-semibold flex items-center gap-2">
+                      Подробнее <Icon name="ArrowRight" size={16} />
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
-            <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in animation-delay-400">
-              <CardContent className="p-8 space-y-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <Icon name="MessageCircleHeart" size={32} className="text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold text-secondary">Психотерапия</h3>
-                <p className="text-muted-foreground">
-                  Работа с психологическими проблемами, травмами и кризисными состояниями.
-                </p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Индивидуальная терапия</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Семейная терапия</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={16} className="text-primary mt-1" />
-                    <span>Групповые сессии</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+            <Link to="/services/psychotherapist">
+              <Card className="border-2 hover:border-primary transition-all hover:shadow-lg animate-scale-in animation-delay-400 cursor-pointer h-full">
+                <CardContent className="p-8 space-y-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                    <Icon name="MessageCircleHeart" size={32} className="text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-secondary">Психотерапия</h3>
+                  <p className="text-muted-foreground">
+                    Работа с психологическими проблемами, травмами и кризисными состояниями.
+                  </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Индивидуальная терапия</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Семейная терапия</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Icon name="Check" size={16} className="text-primary mt-1" />
+                      <span>Групповые сессии</span>
+                    </li>
+                  </ul>
+                  <div className="pt-4">
+                    <span className="text-primary font-semibold flex items-center gap-2">
+                      Подробнее <Icon name="ArrowRight" size={16} />
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-8">
+            <Link to="/services/alcohol-treatment">
+              <Card className="border-2 hover:border-primary transition-all hover:shadow-lg cursor-pointer">
+                <CardContent className="p-6 flex items-center gap-4">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Icon name="Wine" size={28} className="text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-secondary mb-1">Лечение алкогольной зависимости</h4>
+                    <p className="text-sm text-muted-foreground">Комплексная программа от детоксикации до реабилитации</p>
+                  </div>
+                  <Icon name="ArrowRight" size={20} className="text-primary flex-shrink-0" />
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/services/home-visit">
+              <Card className="border-2 border-red-200 bg-red-50/50 hover:border-red-300 hover:shadow-lg transition-all cursor-pointer">
+                <CardContent className="p-6 flex items-center gap-4">
+                  <div className="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Icon name="Ambulance" size={28} className="text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-bold text-secondary mb-1">Вызов врача на дом</h4>
+                    <p className="text-sm text-muted-foreground">Экстренная помощь 24/7. Приезд в течение часа</p>
+                  </div>
+                  <Icon name="ArrowRight" size={20} className="text-red-600 flex-shrink-0" />
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
@@ -307,24 +361,31 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: 'Иванова Елена Михайловна', role: 'Врач-психиатр высшей категории', exp: '20 лет опыта' },
-              { name: 'Петров Андрей Сергеевич', role: 'Врач-нарколог, к.м.н.', exp: '15 лет опыта' },
-              { name: 'Сидорова Мария Александровна', role: 'Психотерапевт, семейный консультант', exp: '18 лет опыта' }
+              { name: 'Иванова Елена Михайловна', role: 'Врач-психиатр высшей категории', exp: '20 лет опыта', link: '/doctors/ivanova-elena' },
+              { name: 'Петров Андрей Сергеевич', role: 'Врач-нарколог, к.м.н.', exp: '15 лет опыта', link: '/doctors/petrov-andrey' },
+              { name: 'Сидорова Мария Александровна', role: 'Психотерапевт, семейный консультант', exp: '18 лет опыта', link: '/doctors/sidorova-maria' }
             ].map((doctor, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-xl transition-all animate-scale-in" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
-                  <img 
-                    src="https://cdn.poehali.dev/projects/6186b5dd-ed8b-48d6-853e-c1baf83a4f2d/files/ffe44746-9680-4a94-8938-0156760911ff.jpg"
-                    alt={doctor.name}
-                    className="w-full h-full object-cover opacity-80"
-                  />
-                </div>
-                <CardContent className="p-6 space-y-2">
-                  <h3 className="text-xl font-bold text-secondary">{doctor.name}</h3>
-                  <p className="text-muted-foreground">{doctor.role}</p>
-                  <p className="text-sm text-primary font-semibold">{doctor.exp}</p>
-                </CardContent>
-              </Card>
+              <Link key={index} to={doctor.link}>
+                <Card className="overflow-hidden hover:shadow-xl transition-all animate-scale-in cursor-pointer h-full" style={{ animationDelay: `${index * 200}ms` }}>
+                  <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 relative overflow-hidden">
+                    <img 
+                      src="https://cdn.poehali.dev/projects/6186b5dd-ed8b-48d6-853e-c1baf83a4f2d/files/ffe44746-9680-4a94-8938-0156760911ff.jpg"
+                      alt={doctor.name}
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                  </div>
+                  <CardContent className="p-6 space-y-2">
+                    <h3 className="text-xl font-bold text-secondary">{doctor.name}</h3>
+                    <p className="text-muted-foreground">{doctor.role}</p>
+                    <p className="text-sm text-primary font-semibold">{doctor.exp}</p>
+                    <div className="pt-2">
+                      <span className="text-primary font-semibold flex items-center gap-1 text-sm">
+                        Подробнее <Icon name="ArrowRight" size={14} />
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
